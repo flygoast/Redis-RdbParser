@@ -40,3 +40,5 @@ t/rdb_version_5_with_checksum.t
 t/regular_set.t
 t/regular_sorted_set.t
 t/sorted_set_as_ziplist.t
+docs/RDB_File_Format.textile
+docs/RDB_Version_History.textile
