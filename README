@@ -1,4 +1,4 @@
-Redis-RdbParser version 0.01
+Redis-RdbParser version 0.02
 ============================
 
 Redis::RdbParser is a parser for Redis' rdb dump files. 
