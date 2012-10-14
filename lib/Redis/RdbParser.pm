@@ -8,7 +8,7 @@ require Exporter;
 
 our @ISA = qw(Exporter);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Carp;
 
@@ -1009,7 +1009,7 @@ Redis::RdbParser - Redis rdb dump file parser
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -1265,11 +1265,17 @@ Called to indicate we have completed parsing of the dump file.
 =head2 filter 
 
 filter is a reference with the following keys:
+
+=over 4
+
     $filter = {
         "dbs"   => [0, 1],              # db number
         "keys"  => ["^foo$", "^bar"],   # keys regular expression
         "types" => ["string", "hash", "list", "set", "sorted set"],
     }
+
+=back
+
 
 If filter is undef, results will not be filtered.
 If dbs, keys or types is undef, no filtering will be done on the axis.
@@ -1280,7 +1286,7 @@ https://github.com/flygoast/Redis-RdbParser
 
 =head1 AUTHOR
 
-fenggu, E<lt>flggoast@126.comE<gt>
+fenggu, E<lt>flygoast@126.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 

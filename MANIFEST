@@ -2,6 +2,7 @@ Changes
 Makefile.PL
 MANIFEST
 README
+LICENSE
 lib/Redis/RdbParser.pm
 t/empty_database.t
 t/dump/dictionary.rdb
