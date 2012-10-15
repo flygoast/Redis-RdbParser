@@ -4,5 +4,9 @@ Revision history for Perl extension Redis::RdbParser.
 	- first version released
 
 0.02  Sun Oct 14 09:57:00 2012
-    - Add LICENSE file
+    - add LICENSE file
     - fix author email address
+
+0.03  Mon Oct 15 15:31:00 2012
+    - add strict and warnings progma in test scripts
+    - fix repeat variable declaration in t/parser_filters.t
