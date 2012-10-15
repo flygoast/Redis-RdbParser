@@ -1,5 +1,7 @@
 use Test::More tests => 2;
 
+use warnings;
+use strict;
 use blib;
 use FindBin qw($Bin);
 use Redis::RdbParser;
