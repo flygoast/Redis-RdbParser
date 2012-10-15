@@ -112,7 +112,7 @@ my $filter = {
 $parser->parse("$Bin/dump/parser_filters.rdb", $filter);
 ok($test_value eq "100001100002100003100004", "parse filter 1");
 
-my $filter = {
+$filter = {
     'dbs' => [0],
     'keys' => ['^l11$'],
     'types' => ["list"],
