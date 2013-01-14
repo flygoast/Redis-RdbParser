@@ -12,4 +12,4 @@ Revision history for Perl extension Redis::RdbParser.
     - fix author email address
 
 0.01  Wed Oct 10 19:13:58 2012
-	- first version released
+    - first version released
