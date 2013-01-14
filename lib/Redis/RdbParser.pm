@@ -8,7 +8,7 @@ require Exporter;
 
 our @ISA = qw(Exporter);
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Carp;
 
@@ -89,7 +89,7 @@ sub new {
 # i.e.
 #   filter = {
 #       "dbs" => [0, 1],
-#       "keys" => ["^foo$", "bar"],
+#       "keys" => ['^foo$', 'bar'],
 #       "types" => ["hash", "set", "sortedset", "list", "string"],
 #   }
 #   
@@ -1009,14 +1009,16 @@ Redis::RdbParser - Redis rdb dump file parser
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
  use Redis::RdbParser;
 
  $parser = new Redis::RdbParser;
+ #
  # or
+ #
  my $callbacks = {
      "start_rdb"         => \&start_rdb,
      "start_database"    => \&start_database,
@@ -1037,13 +1039,15 @@ version 0.03
      "end_database"      => \&end_database,
      "end_rdb"           => \&end_rdb,
  };
- $parser = new Redis::RdbParser($callback);
+ $parser = new Redis::RdbParser($callbacks);
 
  $parser->parse($filename);
+ #
  # or 
+ #
  my $filter = {
      'dbs' => [0, 1],
-     'keys' => ["^foo$", "^bar"],
+     'keys' => ['^foo$', '^bar'],
      'types' => ["hash", "set"],
  };
  $parser->parse($filename, $filter);
@@ -1270,14 +1274,21 @@ filter is a reference with the following keys:
 
     $filter = {
         "dbs"   => [0, 1],              # db number
-        "keys"  => ["^foo$", "^bar"],   # keys regular expression
+        "keys"  => ['^foo$', '^bar'],   # keys regular expression
         "types" => ["string", "hash", "list", "set", "sorted set"],
     }
 
+
 =back
 
+=head3 NOTE:
+    
+The filter will NOT affect `start_rdb`, `end_rdb`, `start_database`, `end_database`, and `key` callbacks.
 
 If filter is undef, results will not be filtered.
+
+The keys in filter is processed as regular expression.
+
 If dbs, keys or types is undef, no filtering will be done on the axis.
 
 =head1 REPOSITORY
@@ -1286,11 +1297,11 @@ https://github.com/flygoast/Redis-RdbParser
 
 =head1 AUTHOR
 
-fenggu, E<lt>flygoast@126.comE<gt>
+FengGu, E<lt>flygoast@126.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2012 by fenggu
+Copyright (C) 2012 by FengGu
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,
