@@ -6,6 +6,7 @@ use strict;
 use blib;
 use FindBin qw($Bin);
 use Redis::RdbParser;
+use Config;
 
 my $callbacks = {
     "start_rdb"         => \&start_rdb,
@@ -104,5 +105,10 @@ sub end_rdb {
 }
 
 my $parser = new Redis::RdbParser($callbacks);
-$parser->parse("$Bin/dump/keys_with_expiry.rdb");
-ok($test_expiry == 1671963072573, "test_expiry");
+
+if (defined($Config{use64bitint})) {
+    $parser->parse("$Bin/dump/keys_with_expiry.rdb");
+    ok($test_expiry == 1671963072573, "test_expiry");
+} else {
+    ok(1);
+}

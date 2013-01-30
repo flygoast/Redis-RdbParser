@@ -6,6 +6,7 @@ use strict;
 use blib;
 use FindBin qw($Bin);
 use Redis::RdbParser;
+use Config;
 
 my $callbacks = {
     "start_rdb"         => \&start_rdb,
@@ -110,6 +111,11 @@ $parser->parse("$Bin/dump/intset_16.rdb");
 ok($test_value eq "327643276532766", "intset_16");
 $parser->parse("$Bin/dump/intset_32.rdb");
 ok($test_value eq "214741810821474181092147418110", "intset_32");
-$parser->parse("$Bin/dump/intset_64.rdb");
-ok($test_value eq "922309055758303231692230905575830323179223090557583032318",
-    "intset_64");
+if (defined($Config{use64bitint})) {
+    $parser->parse("$Bin/dump/intset_64.rdb");
+    ok($test_value eq 
+        "922309055758303231692230905575830323179223090557583032318",
+        "intset_64");
+} else {
+    ok(1);
+}

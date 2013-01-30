@@ -5,6 +5,7 @@ use strict;
 use blib;
 use FindBin qw($Bin);
 use Redis::RdbParser;
+use Config;
 
 my $callbacks = {
     "start_rdb"         => \&start_rdb,
@@ -119,5 +120,10 @@ $filter = {
     'keys' => ['^l11$'],
     'types' => ["list"],
 };
+
+if (defined($Config{use64bitint})) {
 $parser->parse("$Bin/dump/parser_filters.rdb", $filter);
 ok($test_value eq "999999999999999999989999999997", "parse filter 2");
+} else {
+    ok(1);
+}
