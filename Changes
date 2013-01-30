@@ -1,5 +1,9 @@
 Revision history for Perl extension Redis::RdbParser.
 
+0.05  Mon Jan 01 19:57:00 2013
+    - add Config module filter to 32bit platform.
+      Redis::RdbParser can only used at 64bit platform.
+
 0.04  Mon Jan 01 19:57:00 2013
     - fix typo and add some content in perldoc.
 

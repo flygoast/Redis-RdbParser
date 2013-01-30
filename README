@@ -1,4 +1,4 @@
-Redis-RdbParser version 0.04
+Redis-RdbParser version 0.05
 ============================
 
 Redis::RdbParser is a parser for Redis' rdb dump files. 
@@ -22,6 +22,10 @@ To install this module type the following:
 DEPENDENCIES
 
 This module requires no other modules and libraries.
+
+LIMITS
+
+Redis::RdbParser can ONLY run at 64bit platforms.
 
 
 COPYRIGHT AND LICENCE
